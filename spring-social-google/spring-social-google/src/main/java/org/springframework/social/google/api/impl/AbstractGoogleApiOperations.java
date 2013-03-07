@@ -20,6 +20,7 @@ import static org.springframework.http.HttpMethod.PUT;
 import static org.springframework.util.StringUtils.hasText;
 
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.social.MissingAuthorizationException;
@@ -75,7 +76,9 @@ public abstract class AbstractGoogleApiOperations {
 	}
 	
 	protected <T> T patch(String url, Object request, Class<T> responseType) {
-		ResponseEntity<T> response = restTemplate.exchange(url, PATCH, new HttpEntity<Object>(request), responseType);
-		return response.getBody();
+		HttpHeaders httpHeaders = new HttpHeaders();
+		httpHeaders.set("X-HTTP-Method-Override", "PATCH");
+		final HttpEntity<Object> httpEntity = new HttpEntity<Object>(request, httpHeaders);
+		return restTemplate.exchange(url, POST, httpEntity, responseType).getBody();
 	}
 }
