@@ -189,6 +189,21 @@ public interface DriveOperations {
 	DriveFile createFileMetadata(DriveFile metadata);
 
 	/**
+	 * Updates an existing files metadata
+	 *
+     * @param fileId
+     *            The file's id
+	 * @param title
+	 *            The file's title
+     * @param mimeType
+     *            The file's mimeType
+     * @param description
+     *            The file's description           
+	 * @return {@link DriveFile} representing the updated file
+	 */
+	DriveFile updateFileMetadata(String fileId, String title, String mimeType, String description);
+
+	/**
 	 * Creates a folder
 	 * 
 	 * @param parentId

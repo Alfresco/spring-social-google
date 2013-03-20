@@ -180,6 +180,17 @@ public class DriveTemplate extends AbstractGoogleApiOperations implements
 	public DriveFile createFileMetadata(DriveFile metadata) {
 		return saveEntity(DRIVE_FILES_URL, metadata);
 	}
+	
+	@Override
+	public DriveFile updateFileMetadata(String fileId, String title, String mimeType, String description) {
+	    Object patch = new PatchBuilder()
+	        .set("title", title)
+	        .set("mimeType", mimeType)
+	        .set("description", description)
+	        .getMap();
+	       
+	    return patch(DRIVE_FILES_URL + fileId, patch, DriveFile.class);
+	}
 
 	@Override
 	public DriveFile createFolder(String parentId, String name) {
