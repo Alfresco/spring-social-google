@@ -4,7 +4,7 @@
 	<groupId>org.springframework.social</groupId>
 	<artifactId>spring-social-google</artifactId>
 	<name>Spring Social Google</name>
-	<version>1.0.0.M2.alfresco1</version>
+	<version>1.0.0.M2.alfresco2</version>
 
 	<properties>
 		<spring.social.version>1.0.0.RC1</spring.social.version>
